@@ -41,7 +41,7 @@ public class SnakeAndLadderService {
     }
 
     public void nextMove(Player player,int move){
-        int oldPosition = board.getPlayerPosition().get(player.getId());
+        int oldPosition = getPlayerPosition(player);
         int newPosition = oldPosition + move;
 
         //Logic if the movement valid
@@ -70,7 +70,11 @@ public class SnakeAndLadderService {
     }
 
     private boolean hasPlayerWon(Player currentPlayer) {
-        int currentPlayerPosition = board.getPlayerPosition().get(currentPlayer.getId());
+        int currentPlayerPosition = getPlayerPosition(currentPlayer);
         return currentPlayerPosition == board.getSize();
+    }
+
+    public int getPlayerPosition(Player player){
+        return board.getPlayerPosition().get(player.getId());
     }
 }
