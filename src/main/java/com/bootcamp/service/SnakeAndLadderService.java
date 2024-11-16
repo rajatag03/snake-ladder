@@ -45,9 +45,32 @@ public class SnakeAndLadderService {
         int newPosition = oldPosition + move;
 
         //Logic if the movement valid
+        if(newPosition > board.getSize()){
+            newPosition = oldPosition;
+        }else{
+            newPosition = afterSnakesAndLadder(newPosition);
+        }
+
         board.getPlayerPosition().put(player.getId(),newPosition);
 
         System.out.println(player.getName() + " rolled a " + move + " and moved to " + newPosition);
+    }
+
+    private int afterSnakesAndLadder(int oldPosition) {
+        int newPosition = oldPosition;
+        for(Snake snake: board.getSnakes()){
+            if(oldPosition == snake.getHead()){
+                newPosition = snake.getTail();
+                break;
+            }
+        }
+        for(Ladder ladder : board.getLadders()){
+            if(oldPosition == ladder.getStart()){
+                newPosition = ladder.getEnd();
+                break;
+            }
+        }
+        return newPosition;
     }
 
     private boolean isGameOver(){
