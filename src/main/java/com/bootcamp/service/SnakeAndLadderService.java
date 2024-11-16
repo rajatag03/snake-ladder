@@ -1,13 +1,13 @@
 package com.bootcamp.service;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 import com.bootcamp.models.Ladder;
 import com.bootcamp.models.Player;
 import com.bootcamp.models.Snake;
 import com.bootcamp.models.SnakeAndLadderBoard;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
 public class SnakeAndLadderService {
 
